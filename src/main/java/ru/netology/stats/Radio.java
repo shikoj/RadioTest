@@ -1,3 +1,4 @@
+package ru.netology.stats;
 public class Radio {
     public int currentStation;
 
@@ -31,7 +32,7 @@ public class Radio {
         return currentVolume;
     }
 
-    public int setVolume(int volume) {
+    public void setVolume(int volume) {
             if (volume < 0) {
                 currentVolume = 0;
             } else if (volume > 100) {
@@ -39,7 +40,6 @@ public class Radio {
             } else {
                 currentVolume = volume;
             }
-            return currentVolume;
     }
 
     public void increaseVolume() {
