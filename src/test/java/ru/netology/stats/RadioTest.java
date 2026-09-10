@@ -1,4 +1,5 @@
 package ru.netology.stats;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -6,7 +7,7 @@ public class RadioTest {
     Radio radio = new Radio();
 
     // nextStation
-  @Test
+    @Test
     public void setNextStationPositiveTest5() {
 
         radio.setNextStation(5);
@@ -61,16 +62,16 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
-/// prevStation
+    /// prevStation
 
     @Test
     public void setPrevStationPositive5() {
-      radio.setPrevStation(5);
+        radio.setPrevStation(5);
 
-      int expected = 4;
-      int actual = radio.getCurrentStation();
+        int expected = 4;
+        int actual = radio.getCurrentStation();
 
-      Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -115,7 +116,7 @@ public class RadioTest {
 
     //settervolume
     @Test
-    public void setVolumePositiveTest100(){
+    public void setVolumePositiveTest100() {
         radio.setVolume(100);
 
         int expected = 100;
@@ -123,8 +124,9 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
-    public void setVolumePositiveTest0(){
+    public void setVolumePositiveTest0() {
         radio.setVolume(0);
 
         int expected = 0;
@@ -132,8 +134,9 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
-    public void setVolumeNegativeTestUnder0(){
+    public void setVolumeNegativeTestUnder0() {
         radio.setVolume(-1);
 
         int expected = 0;
@@ -141,8 +144,9 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
-    public void setVolumeNegativeTestOver100(){
+    public void setVolumeNegativeTestOver100() {
         radio.setVolume(101);
 
         int expected = 100;
@@ -152,7 +156,7 @@ public class RadioTest {
     }
 
 
-///  volume increase
+    ///  volume increase
 
     @Test
     public void increaseVolumePositiveTest50() {
@@ -186,6 +190,7 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void increaseVolumeNegativeTestOver100() {
         radio.setVolume(1000);
@@ -217,6 +222,7 @@ public class RadioTest {
         int actual = radio.getVolume();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void decreaseVolumeNegativeTestOver100() {
         radio.setVolume(101);
@@ -226,6 +232,7 @@ public class RadioTest {
         int actual = radio.getVolume();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void decreaseVolumeNegativeTestUnder0() {
         radio.setVolume(-1);
