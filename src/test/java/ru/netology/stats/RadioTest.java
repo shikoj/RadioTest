@@ -6,11 +6,54 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
     Radio radio = new Radio();
 
+    @Test
+    public void defaultNumberOfStation() {
+        Assertions.assertEquals(10, radio.getNumberOfStations());
+    }
+
+    @Test
+    public void CustomNumberOfStation() {
+        Radio radio = new Radio(30);
+        Assertions.assertEquals(30, radio.getNumberOfStations());
+    }
+
+
+    @Test
+    public void shouldSetValidStation(){
+
+        radio.setCurrentStation(5);
+        int expected = 5;
+        int actual = radio.currentStation;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotSetStationBelowZero() {
+        radio.setCurrentStation(-1);
+        Assertions.assertEquals(0, radio.getCurrentStation());
+    }
+
+    @Test
+    public void shouldNotSetStationAboveMax() {
+        radio.setCurrentStation(10);
+        Assertions.assertEquals(0, radio.getCurrentStation());
+    }
+
+    @Test
+    public void shouldNotSetStationBelowMax() {
+        radio.setCurrentStation(10);
+        Assertions.assertEquals(0, radio.getCurrentStation());
+    }
+
+
+
     // nextStation
     @Test
     public void setNextStationPositiveTest5() {
+        radio.currentStation = 5;
 
-        radio.setNextStation(5);
+        radio.setNextStation();
 
         int expected = 6;
         int actual = radio.getCurrentStation();
@@ -21,7 +64,8 @@ public class RadioTest {
     @Test
     public void setNextStationPositiveTest_9() {
 
-        radio.setNextStation(9);
+        radio.currentStation = 9;
+        radio.setNextStation();
 
         int expected = 0;
         int actual = radio.getCurrentStation();
@@ -32,7 +76,8 @@ public class RadioTest {
     @Test
     public void setNextStationPositiveTest_0() {
 
-        radio.setNextStation(0);
+        radio.currentStation = 0;
+        radio.setNextStation();
 
         int expected = 1;
         int actual = radio.getCurrentStation();
@@ -42,8 +87,9 @@ public class RadioTest {
 
     @Test
     public void setNextStationNegativeTestUnder0() {
+        radio.currentStation = -2;
 
-        radio.setNextStation(-2);
+        radio.setNextStation();
 
         int expected = 0;
         int actual = radio.getCurrentStation();
@@ -53,8 +99,9 @@ public class RadioTest {
 
     @Test
     public void setNextStationNegativeTestAbove9() {
+        radio.currentStation = 10;
 
-        radio.setNextStation(10);
+        radio.setNextStation();
 
         int expected = 0;
         int actual = radio.getCurrentStation();
@@ -66,7 +113,8 @@ public class RadioTest {
 
     @Test
     public void setPrevStationPositive5() {
-        radio.setPrevStation(5);
+        radio.currentStation = 5;
+        radio.setPrevStation();
 
         int expected = 4;
         int actual = radio.getCurrentStation();
@@ -76,7 +124,8 @@ public class RadioTest {
 
     @Test
     public void setPrevStationPositive0() {
-        radio.setPrevStation(0);
+        radio.currentStation = 0;
+        radio.setPrevStation();
 
         int expected = 9;
         int actual = radio.getCurrentStation();
@@ -86,7 +135,8 @@ public class RadioTest {
 
     @Test
     public void setPrevStationPositive9() {
-        radio.setPrevStation(9);
+        radio.currentStation = 9;
+        radio.setPrevStation();
 
         int expected = 8;
         int actual = radio.getCurrentStation();
@@ -96,7 +146,8 @@ public class RadioTest {
 
     @Test
     public void setPrevStationNegativeUnder0() {
-        radio.setPrevStation(-2);
+        radio.currentStation = -2;
+        radio.setPrevStation();
 
         int expected = 9;
         int actual = radio.getCurrentStation();
@@ -106,7 +157,8 @@ public class RadioTest {
 
     @Test
     public void setPrevStationNegativeAbove9() {
-        radio.setPrevStation(10);
+        radio.currentStation = 10;
+        radio.setPrevStation();
 
         int expected = 9;
         int actual = radio.getCurrentStation();
